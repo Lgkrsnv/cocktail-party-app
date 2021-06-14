@@ -1,0 +1,69 @@
+{{#if user}}
+<h1>Личный кабинет</h1>
+<div style="display: flex; justify-content: space-between;">
+  <img src="/avatars/{{user.avatar}}" alt="avatar {{username}}" width="200">
+  <a href="/parties/form" style="margin-top: 50px; margin-bottom: 50px; min-width: 300px; min-height: 70px; font-size: 24px"
+    id="makeit" class="btn btn-secondary">Устроить вечеринку</a>
+</div>
+
+
+<h3>Список организованных вами вечеринок:</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Организатор</th>
+      <th scope="col">Дата начала</th>
+      <th scope="col">Место проведения</th>
+      <th scope="col">Главный напиток</th>
+      <th scope="col">Количество гостей</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each userParties}}
+    <tr>
+      <td><a href="/parties/{{this._id}}">{{this.author}}</a></td>
+      <td>{{this.slicedDate}}</td>
+      <td>{{this.location}}</td>
+      <td>{{this.cocktail}}</td>
+      <td>{{this.guestsAmount}}</td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+<h3>Вечеринки, на которые вы приглашены:</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Организатор</th>
+      <th scope="col">Дата начала</th>
+      <th scope="col">Место проведения</th>
+      <th scope="col">Главный напиток</th>
+      <th scope="col">Не забудь</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each userAsGuest}}
+    <tr>
+      <td><a href="/parties/{{this._id}}">{{this.author}}</a></td>
+      <td>{{this.slicedDate}}</td>
+      <td>{{this.location}}</td>
+      <td>{{this.cocktail}}</td>
+      <td>{{this.takeFood}} и {{this.takeDrink}}</td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+<button class="btn btn-outline-dark" type="button" data-username="{{username}}" id="getAvatarForm">Сменить аватарку</button>
+<div id="avatarFormDiv"></div>
+{{else}}
+<div class="alert alert-warning"  role="alert">
+  Сначала необходимо войти или зарегистрироваться!
+</div>
+{{/if}}
+
+<script defer src="/js/avatar.js"></script>
+
+{{!-- --}}

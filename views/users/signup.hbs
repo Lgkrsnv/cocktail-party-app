@@ -1,0 +1,53 @@
+<div id="registration">
+  <h2 class="mt-5 mb-4">Форма регистрации</h2>
+  {{#if err}}
+  <h4>Проверьте введенные данные</h4>
+  {{/if}}
+  <form class="row g-3  needs-validation" id="signupForm"  enctype="multipart/form-data">
+
+    <div class="col-md-6">
+      <label for="validationDefaultUsername" class="form-label">Имя пользователя</label>
+      <div class="input-group">
+        <span class="input-group-text" id="inputGroupPrepend2">@</span>
+        <input type="text" class="form-control" id="validationDefaultUsername" name="username"
+          aria-describedby="inputGroupPrepend2" required>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"
+        required>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      <div class="invalid-feedback">
+        <i>Адрес эл.почты не соответствует формату</i>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+      <div class="invalid-feedback">
+        <i>Пароль должен быть длиннее 6 символов</i>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="exampleInputPassword2" class="form-label"> Repeat Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword2" name="password2" required>
+      <div class="invalid-feedback">
+        <i>Пароли не совпадают</i>
+      </div>
+    </div>
+
+
+    <div class="col-6">
+      <button class="btn btn-outline-success" type="submit">Отправить форму</button>
+    </div>
+
+  </form>
+
+
+
+
+</div>
+<script defer src="/js/signup.js"></script>

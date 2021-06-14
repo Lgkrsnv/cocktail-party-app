@@ -1,0 +1,70 @@
+<div>
+
+  <h1>Make your super cocktail party</h1>
+
+
+
+  {{#if errors}}
+  <div>
+    <span>Не получилось :( Ошибка: вы заполнили все поля??</span>
+    <ul class="errors">
+      {{#each errors}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+
+  <form method="post" id="makePartyForm" action="/parties">
+    <div class="col-mb-6">
+      <label for="author" class="form-label">Your name:</label><br>
+      <input id="author" name="author" type="text" value="{{username}}" required disabled>
+    </div>
+    <div class="col-mb-6">
+      <label for="location" class="form-label">Location:</label><br>
+      <input id="location" name="location" type="text" value="" required>
+    </div>
+    <div class="col-mb-6">
+      <label for="starts" class="form-label">Time and date:</label><br>
+      <input id="starts" name="starts" type="datetime-local" value="choose date and time" required>
+    </div>
+
+
+    <div class="col-mb-6">
+      <label for="cocktail" class="form-label">Выбранный напиток вечеринки:</label><br>
+      <input id="cocktail" type="text" data-cocktailid="" value='choose you cocktail' disabled>
+      <input id="cocktailReal" name="cocktailReal" type="hidden" value='' required>
+      <input id="cocktailid" name="cocktailid" type="hidden" value=''>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" name="privat" type="checkbox" id="privat">
+      <label class="form-check-label" for="privat">
+        Вечеринка для своих?
+      </label>
+    </div><br>
+
+    <div class="col-mb-6" id="textar">
+      <textarea class="form-control" name="description" placeholder="Leave a description here" id="de
+        scription">Напишите о вашей вечеринке</textarea>
+    </div><br>
+
+    <div class="col-mb-6" style="margin-top: 35px;">
+      <input type="submit" class="btn btn-outline-warning btn-lg" value="Make party!" class="button">
+    </div>
+  </form>
+  <hr>
+
+  <button type="button" style="margin-top: 25px; margin-bottom: 25px;" class="btn btn-info"
+    id="chooseCocktail">Подобрать коктейль</button>
+  <button type="button" style="margin-top: 25px; margin-bottom: 25px;" class="btn btn-info"
+    id="chooseRandomCocktail">Случайный коктейль</button>
+  <button type="button" style="margin-top: 25px; margin-bottom: 25px;" class="btn btn-info"
+    id="chooseTopCocktail">Популярный коктейль</button>
+
+  <div id="chooseDiv">
+
+  </div>
+
+  <script defer src="/js/chooseCocktail.js"></script>
+</div>

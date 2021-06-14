@@ -1,0 +1,14 @@
+<form id="chooseCocktailForm">
+  {{#each drinks}}
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" name="{{this.strIngredient1}}" type="checkbox" 
+      id="{{this.strIngredient1}}">
+    <label class="form-check-label" for="{{this.strIngredient1}}">{{this.strIngredient1}}</label>
+
+  </div>
+  {{/each}}
+  <br>
+  <hr>
+  <button id="sendCheckboxes" style="margin-top: 15px;" type="submit" class="btn btn-outline-info btn-lg">Choose</button>
+
+</form>

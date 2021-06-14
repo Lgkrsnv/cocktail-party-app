@@ -1,0 +1,89 @@
+{{!-- <div id="editShow">
+  <h1>Редактировать вечеринку</h1>
+
+  <form id="editForm"  data-partyid="{{party._id}}">
+    <label for="author">Your name</label>
+    <input id="author" name="author" type="text" value="{{party.author}}" required disabled>
+
+    <label for="location">Song title:</label>
+    <input id="location" name="location" type="text" value="{{party.location}}" required>
+
+    <label for="starts">Song title:</label>
+    <input id="starts" name="starts" type="datetime-local" value="{{party.starts}}" required>
+
+    <input type="submit" value="Make party!" class="button">
+  </form>
+<script defer src="/js/edit.js"></script>
+</div> --}}
+
+<div  id="editShow">
+
+  <h1>Make your super cocktail party</h1>
+
+
+
+  {{!-- {{#if errors}}
+  <div>
+    <span>Не получилось :( Ошибка:</span>
+    <ul class="errors">
+      {{#each errors}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}} --}}
+
+  <form method="post" id="editForm"  data-partyid="{{party._id}}" class="row g-3">
+    <div class="col-mb-3">
+      <label for="author" class="form-label">Your name:</label><br>
+      <input id="author" name="author" type="text" value="{{party.author}}" required disabled>
+    </div>
+    <div class="col-mb-3">
+      <label for="location" class="form-label">Location:</label><br>
+      <input id="location" name="location" type="text" value="{{party.location}}" required>
+    </div>
+    <div class="col-mb-3">
+      <label for="starts" class="form-label">Time and date:</label><br>
+      <input id="starts" name="starts" type="datetime-local" value="{{party.starts}}" required>
+    </div>
+
+    <div class="col-mb-3">
+      <textarea class="form-control" name="description" placeholder="Leave a description here"
+        id="description">{{party.description}}</textarea>
+    </div>
+    <div class="col-mb-3">
+      <label for="cocktail" class="form-label">Выбранный напиток вечеринки:</label><br>
+      <input id="cocktail" name="cocktail" type="text" data-cocktailid="" value='{{party.cocktail}}' disabled>
+      <input id="cocktailReal" name="cocktailReal" type="hidden" data-cocktailid="{{party.cocktailid}}" value='{{party.cocktail}}'>
+      <input id="cocktailid" name="cocktailid" type="hidden" value='{{party.cocktailid}}'>
+    </div>
+
+    <div class="form-check">
+      {{#if party.privat}}
+        <input class="form-check-input" name="privat" type="checkbox" id="privat" checked>
+      {{else}}
+        <input class="form-check-input" name="privat" type="checkbox" id="privat">
+      {{/if}}
+      <label class="form-check-label" for="privat">
+        Вечеринка для своих?
+      </label>
+    </div>
+
+    <div class="col-mb-3">
+      <input type="submit" class="btn btn-success" value="Make party!"  class="button">
+    </div>
+  </form>
+
+
+  <button type="button" style="margin-top: 25px; margin-bottom: 25px;" class="btn btn-info" id="chooseCocktail">Выбрать
+    главный коктейль</button>
+  <button type="button" style="margin-top: 25px; margin-bottom: 25px;" class="btn btn-info"
+    id="chooseRandomCocktail">Случайный коктейль</button>
+  <button type="button" style="margin-top: 25px; margin-bottom: 25px;" class="btn btn-info"
+    id="chooseTopCocktail">Популярный коктейль</button>
+  <div id="chooseDiv">
+
+  </div>
+
+  <script defer src="/js/edit.js"></script>
+</div>

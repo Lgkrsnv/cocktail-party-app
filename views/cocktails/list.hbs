@@ -1,0 +1,32 @@
+<div class="cardListContainer" style="display: flex; flex-wrap: wrap;">
+  {{#each fullDrinksList2}}
+  <div class="card" id="card" style="width: 26rem; ">
+    <img src="{{this.strDrinkThumb}}" id="cardImg" class="card-img-top" alt="{{this.strDrink}} photo">
+    <div class="card-body" style="display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: space-between;">
+      <h5 class="card-title">{{this.strDrink}}</h5>
+      <ul id='ingredients'>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Ingredients</th>
+              <th scope="col">Measures</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each this.ingredientsMeasuresArr}}
+            <tr>
+              <td>{{this.ingredients}}</td>
+              <td>{{this.measures}}</td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </ul>
+      <p class="card-text">{{this.strAlcoholic}}<br> {{this.strGlass}}</p>
+      <p class="card-text">Category - {{this.strCategory}}</p>
+      <p class="card-text">{{this.strInstructions}}</p>
+      <a href="#" class="btn btn-primary makeChoiceBtn" id="{{this.idDrink}}" data-cocktailname="{{this.strDrink}}" style="margin-bottom: 20px;">I choose this cocktail</a>
+    </div>
+  </div>
+  {{/each}}
+</div>

@@ -1,0 +1,36 @@
+{{#if err}}
+<div class="alert alert-danger" role="alert">
+  Неверные данные пользователя
+</div><br>
+
+{{/if}}
+
+<form action="/users/login" method="POST" class="row g-3" id="loginForm">
+  <div class="mb-3">
+    <label for="validationServerEmail" class="form-label">Email address</label>
+    <input type="email" name="email" class="form-control" id="validationServerEmail"
+      aria-describedby="emailHelp" required>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+    </div>
+    <div class="valid-feedback">
+      <i>Все хорошо!</i>
+    </div>
+    <div class="invalid-feedback">
+      <i>Перепроверьте введенные данные!</i>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="validationServerPassword" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="validationServerPassword" required>
+    <div class="valid-feedback">
+      <i>Все хорошо!</i>
+    </div>
+    <div class="invalid-feedback">
+      <i>Перепроверьте введенные данные!</i>
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>

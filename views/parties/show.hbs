@@ -1,0 +1,118 @@
+<div id="partiesShow" style="display: flex; margin: 0 auto; justify-content: center;">
+  {{!-- <h1>Party Details</h1> --}}
+  <div style="margin-right: 30px; margin-top: 40px; min-width: 600px;" id="leftDiv">
+    <h2>{{party.cocktail}} Party</h2>
+    <hr>
+    <div style="display: flex; flex-wrap: nowrap;">
+      <div style="align-self: center;">
+        <img src="/avatars/{{avatar}}" alt="{{avatar}} avatar" style="width: 250px; margin-right: 15px;">
+      </div>
+      <div>
+        <p><u><span class="userName">{{party.author}}</u></span> устраивает вечеринку! </p>
+        <p>
+          <u> Встреча начнется:</u> {{slicedTime}} <br> Адрес: {{party.location}}
+        </p>
+        <p style="text-align:justify;">
+          <span><u>О вечеринке:</u></span><br>
+          {{party.description}}
+        </p>
+        {{#if party.privat}}
+        <p><i><u>Закрытая вечеринка</u></i></p>
+        {{else}}
+        <p><i><u>Открытая вечеринка</u></i></p>
+        {{/if}}
+      </div>
+    </div>
+    {{#if isAuthor}}
+
+    <div style="margin-top: 20px;">
+      <a href="/parties/form/{{party._id}}" class="btn btn-info">Редактировать</a>
+      <button type="button" id="deleteBtn" class="btn btn-secondary" data-partyid="{{party._id}}">Отменить
+        вечеринку</button>
+    </div>
+    <br>
+    <p style="display: flex;"> <button class="js-textareacopybtn btn btn-outline-dark" id="copyBtn"
+        style="margin-top: 20px;">Click here to copy invite link</button>
+      <input class="js-copytextarea" type="text" style="margin-top: 30px; width: 350px; "
+        value="http://localhost:3000/parties/{{party._id}}">
+    </p>
+
+
+
+
+    {{/if}}
+    <h3>Что нам понадобится</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Ingredients</th>
+          <th scope="col">Measures</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each ingredientsMeasuresArr}}
+        <tr>
+          <td>{{this.ingredients}}</td>
+          <td>{{this.measures}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    {{#if showForm}}
+    <h3 class="header">Чтобы присоединиться, выбери ингридиент коктейля,<br>закуску и не забудь их взять с собой 🍹</h3>
+    {{/if}}
+    <ul id="guestList">
+      {{#each partyGuests}}
+      <li>{{this.username}} принесет {{this.ingredient}} и {{this.food}}</li>
+      {{/each}}
+    </ul>
+    {{#if showForm}}
+
+    <form id="goForm" data-partyid="{{party._id}}" data-userid="{{userid}}" data-username="{{username}}">
+      <h6>Присоединяйся!</h6>
+      <select name="ingredient" id="ingredient" class="form-select" aria-label="Default select example" required>
+        {{#each ingredientsMeasuresArr}}
+        <option value="{{this.ingredients}}">{{this.ingredients}}</option>
+        {{/each}}
+      </select>
+      <hr>
+      <h6>Какую закуску принесешь?</h6>
+      <label for="food"></label>
+      <input type="text" id="food" placeholder="что принесешь?" required>
+      <button>Иду!</button>
+    </form>
+    {{/if}}
+    <button type="button" id="{{party._id}}" class="btn btn-outline-dark showCommentsBtn"
+      style="margin-top: 30px;">Открыть комментарии</button>
+  </div>
+
+
+  <div style="margin-top: 40px;">
+    <div class="card" style="width: 25rem;margin-top: 50px;">
+      <img src="{{drinkObj.strDrinkThumb}}" id="cardImg" class="card-img-top" alt="{{drinkObj.strDrink}} photo">
+      <div class="card-body">
+        <h5 class="card-title">{{drinkObj.strDrink}}</h5>
+        <ul id='ingredients'>
+        </ul>
+        <p class="card-text">{{drinkObj.strAlcoholic}}<br> {{drinkObj.strGlass}}</p>
+        <p class="card-text">Category - {{drinkObj.strCategory}}</p>
+        <p class="card-text">{{drinkObj.strInstructions}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="comments" id="commentsDiv" style="margin-top: 40px;">
+</div>
+
+
+
+<script defer src="/js/go.js"></script>
+
+<script defer src="/js/comments.js"></script>
+
+
+<script defer src="/js/delete.js"></script>
+
+<script defer src="/js/copy.js"></script>

@@ -1,0 +1,24 @@
+<form id="sendCommentForm">
+  <div class="form-floating">
+    <textarea class="form-control" placeholder="Leave a comment here" name="commentTextArea" id="floatingTextarea2"
+      style="height: 100px"></textarea>
+    <label for="floatingTextarea2">Ваш комментарий</label>
+  </div>
+  <button type="submit" id="{{party._id}}" class="btn btn-outline-dark sendCommentsBtn"
+    style="margin-top: 30px; margin-bottom: 15px;">Отправить комментарий</button>
+</form>
+<div id="commentsBlock">
+  {{#each party.comments}}
+  <div class="commentItem">
+    <div id="avatar"><img src="/avatars/{{this.avatar}}" alt="{{this.user}} avatar" width="100px"></div>
+    <div id="com">
+      <p class="pUser">{{this.user}}</p>
+      <p class="pComment">{{this.comment}}</p>
+      <p class="pJustNow">{{this.slicedDate}}</p>
+    </div>
+    {{#if this.canDelete}}
+    <div class="deleteBtnDiv"><button class="btn btn-outline-dark deteteBtn" id="{{this._id}}">Delete</button></div>
+    {{/if}}
+  </div>
+  {{/each}}
+</div>

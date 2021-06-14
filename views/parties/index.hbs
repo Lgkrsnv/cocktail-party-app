@@ -1,0 +1,33 @@
+
+{{#if user}}
+<a href="/parties/form" style="margin-top: 50px; margin-bottom: 50px; min-width: 300px; min-height: 70px; " id="makeit" class="btn btn-secondary">Устроить вечеринку</a>
+{{/if}}
+
+<h3>Список открытых вечеринок:</h3>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Организатор</th>
+      <th scope="col">Дата начала</th>
+      <th scope="col">Место проведения</th>
+      <th scope="col">Главный напиток</th>
+      <th scope="col">Количество гостей</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each openedParties}}
+    <tr>
+      <td><a href="/parties/{{this._id}}"><img src="/avatars/{{this.avatar}}" alt="{{this.author}} avatar" width="100px"></a></td>
+      <td ><a href="/parties/{{this._id}}">{{this.author}}</a></td>
+      <td>{{this.slicedDate}}</td>
+      <td>{{this.location}}</td>
+      <td>{{this.cocktail}}</td>
+      <td>{{this.guestsAmount}}</td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+<div id="map"></div>
