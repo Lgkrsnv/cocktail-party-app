@@ -6,6 +6,6 @@ web service for organizing cocktail parties
 
 
 API:
-https://www.thecocktaildb.com/api.php
-https://dadata.ru/api/geocode/
-https://yandex.ru/dev/maps/?p=realty
+- https://www.thecocktaildb.com/api.php
+- https://dadata.ru/api/geocode/
+- https://yandex.ru/dev/maps/?p=realty
